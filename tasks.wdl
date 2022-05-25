@@ -7,8 +7,8 @@ task step1{
     input {
         String DOCKER = "alexeyebi/bowtie2_samtools"
 
-        File input
-        File anotherInput
+        File BigFile
+        File SmallFile
 
         Int NUM_THREAD = 5
         String MEMORY = "10 GB"
