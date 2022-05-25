@@ -17,7 +17,7 @@ workflow melt {
         call tvc.step1{
             input:BigFile=pair.left,
                 SmallFile=pair.right,
-                docker=DOCKER,
+                DOCKER=DOCKER,
                 NUM_THREAD=NUM_THREAD,
                 MEMORY=MEMORY,
                 DISK=DISK
