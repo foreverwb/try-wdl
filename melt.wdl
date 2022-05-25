@@ -3,8 +3,8 @@ version 1.0
 import "./tasks.wdl" as tvc
 workflow melt {
     input{
-        Array[File] input1
-        Array[File] input2
+        Array[File] input
+        Array[File] anotherInput
 
         String DOCKER
 
@@ -13,10 +13,10 @@ workflow melt {
         String DISK
     }
 
-    scatter(pair in zip(input1,input2)){
+    scatter(pair in zip(input,anotherInput)){
         call tvc.step1{
-            input:input1=pair.left,
-                input2=pair.right,
+            input:input=pair.left,
+                anotherInput=pair.right,
                 docker=DOCKER,
                 NUM_THREAD=NUM_THREAD,
                 MEMORY=MEMORY,
