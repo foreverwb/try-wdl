@@ -18,9 +18,7 @@ task step1{
     command {
         date;
         for i in `seq 1 $(cat /proc/cpuinfo | grep "physical id" | wc -l)`; do dd if=/dev/zero of=/dev/null & done;
-        sleep 10m;
-        date;
-        ps aux | grep -w dd | awk '{print $2}' | xargs  kill -9;
+        sleep 15m;
         date;
     }
     runtime {
