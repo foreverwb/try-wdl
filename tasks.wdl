@@ -16,13 +16,9 @@ task step1{
 
     }
     command {
-        sudo mkdir /tmp/memory;
-        mount -t tmpfs -o size=$num tmpfs /tmp/memory;
-        dd if=/dev/zero of=/tmp/memory/block bs=5K count=1024000 &;
         for i in `seq 1 $(cat /proc/cpuinfo | grep "physical id" | wc -l)`; do dd if=/dev/zero of=/dev/null & done;
         sleep 1m;
         ps ux;
-        free;
         sleep 10m;
     }
     runtime {
