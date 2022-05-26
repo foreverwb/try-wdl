@@ -11,7 +11,8 @@ workflow melt {
         Int NUM_THREAD
         String MEMORY
         String DISK
-        String SLEEP = "10m"
+        String STEP1SLEEP = "10m"
+        String STEP2SLEEP = "10m"
     }
 
     scatter(pair in zip(BigFiles,SmallFiles)){
@@ -22,7 +23,7 @@ workflow melt {
                 NUM_THREAD=NUM_THREAD,
                 MEMORY=MEMORY,
                 DISK=DISK,
-                SLEEP=SLEEP
+                SLEEP=STEP1SLEEP
         }
     }
     call tvc.step2{
@@ -31,6 +32,6 @@ workflow melt {
             NUM_THREAD=NUM_THREAD,
             MEMORY=MEMORY,
             DISK=DISK,
-            SLEEP=SLEEP
+            SLEEP=STEP2SLEEP
     }
 }
