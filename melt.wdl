@@ -23,4 +23,11 @@ workflow melt {
                 DISK=DISK
         }
     }
+    call tvc.step2{
+        input: step1_output=flatten(step1.output_step1),
+                DOCKER=DOCKER,
+                NUM_THREAD=NUM_THREAD,
+                MEMORY=MEMORY,
+                DISK=DISK
+    }
 }
