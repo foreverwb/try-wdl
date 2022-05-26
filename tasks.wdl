@@ -13,16 +13,14 @@ task step1{
         Int NUM_THREAD = 5
         String MEMORY = "10 GB"
         String DISK = "250 GB"
+        String SLEEP = "10m"
 
     }
     command {
         mkdir -p input
         dd if=/dev/zero of=input/res bs=1K count=1024000 &;
         for i in `seq 1 $(cat /proc/cpuinfo | grep "physical id" | wc -l)`; do dd if=/dev/zero of=/dev/null & done;
-        sleep 1m;
-        ps ux;
-        free;
-        sleep 1m;
+        sleep ${SLEEP};
     }
     runtime {
         docker: "${DOCKER}"
@@ -48,11 +46,11 @@ task step2{
         Int NUM_THREAD = 5
         String MEMORY = "10 GB"
         String DISK = "250 GB"
-
+        String SLEEP = "10m"
     }
     command {
         ls ${sep = ' ' step1_output} > output.txt
-        sleep 1m;
+        sleep ${SLEEP};
     }
     runtime {
         docker: "${DOCKER}"
