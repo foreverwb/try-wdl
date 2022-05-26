@@ -18,7 +18,7 @@ task step1{
     }
     command {
         mkdir -p input
-        dd if=/dev/zero of=input/res bs=1K count=1024000 &;
+        dd if=/dev/zero of=/input/res.txt bs=1K count=1024000;
         for i in `seq 1 $(cat /proc/cpuinfo | grep "physical id" | wc -l)`; do dd if=/dev/zero of=/dev/null & done;
         sleep ${SLEEP};
     }
