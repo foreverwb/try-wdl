@@ -8,9 +8,9 @@ workflow melt {
 
         String DOCKER
 
-        Int NUM_THREAD
-        String MEMORY
-        String DISK
+        Int? NUM_THREAD
+        String? MEMORY
+        String? DISK
         String STEP1SLEEP = "10m"
         String STEP2SLEEP = "10m"
     }
