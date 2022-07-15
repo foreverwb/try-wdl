@@ -1,7 +1,7 @@
 version: 1.2
 workflows:
   - subclass: WDL
-    primaryDescriptorPath: melt.wdl
+    primaryDescriptorPath: /melt.wdl
     testParameterFiles: []
     authors:
       - name: chelvan
